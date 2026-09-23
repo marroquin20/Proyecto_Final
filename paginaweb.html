@@ -3,382 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitácora Valeria Marroquín</title>
-    <link rel="icon" type="image/png" href="Recursos/Img/LogCapSec.png">
-
-    <!-- Fuente Google Fonts (Inter) para tipografía limpia y moderna -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Proyectos Académicos</title>
+    <link rel="icon" type="image/png" href="https://www.capouilliez.edu.gt/assets/img/logo.png">
 
     <style>
+        /* Variables de color - Paleta Morada */
         :root {
-            --primary-color: #6a1b9a;
-            --primary-dark: #4a126d;
-            --header-bg: #2d4a2d;
-            --footer-bg: #e2f7ed;
-            --bg-body: #f8fafc;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --bg-principal: #f3f0f7;
             --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --radius: 16px;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            --text-dark: #2a1b3d;
+            --text-muted: #6e5e85;
+            --purple-primary: #6a1b9a;
+            --purple-hover: #4a148c;
+            --purple-light: #f3e5f5;
+            --border-color: #e1d5e7;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.6;
         }
 
-        /* Header */
+        /* Encabezado */
         header {
-            background-color: var(--header-bg);
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            color: #ffffff;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 10px rgba(186, 104, 200, 0.4);
-        }
-
-        header p {
-            color: #c8e6c9;
-            font-size: 0.95rem;
-            margin-top: 5px;
-        }
-
-        /* Layout Main */
-        main {
-            flex: 1;
-            max-width: 900px;
-            width: 90%;
-            margin: 2.5rem auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        /* Animación Reveal on Scroll */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Secciones de Contenido */
-        .content-section {
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .content-section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Borde púrpura a la izquierda */
-        .content-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 6px;
-            background-color: var(--primary-color);
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            color: var(--text-main);
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .placeholder-text {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Contenedores de Media (Video / PDF) */
-        .media-container {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: #0f172a;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .media-container video {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            display: block;
-            outline: none;
-        }
-
-        .media-container iframe {
-            width: 100%;
-            height: 480px;
-            border: none;
-            display: block;
-        }
-
-        /* Textos auxiliares */
-        .mt-2 {
-            margin-top: 0.75rem;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-muted {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--footer-bg);
-            border-top: 1px solid #b2dfdb;
-            padding: 1.25rem 2.5rem;
+            background-color: #ffffff;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto;
+            box-shadow: 0 2px 10px rgba(106, 27, 154, 0.08);
+            border-bottom: 3px solid var(--purple-primary);
         }
 
-        footer span {
-            font-weight: 600;
-            color: var(--header-bg);
-            font-size: 0.95rem;
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--purple-primary);
         }
 
-        footer img {
-            max-height: 55px;
+        .logo-colegio {
+            height: 60px;
             width: auto;
-            transition: transform 0.2s ease;
+            object-fit: contain;
         }
 
-        footer img:hover {
-            transform: scale(1.05);
+        /* Contenedor principal */
+        main {
+            flex: 1;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        /* Adaptabilidad Móvil */
-        @media (max-width: 640px) {
-            header h1 {
-                font-size: 1.75rem;
-            }
+        .subtitulo {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
 
-            main {
-                width: 92%;
-                padding: 0;
-            }
+        /* Cuadrícula de proyectos */
+        .grid-proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
 
-            .content-section {
-                padding: 1.25rem;
-            }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(106, 27, 154, 0.05);
+            border: 1px solid var(--border-color);
+            border-top: 5px solid var(--purple-primary);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-            .media-container iframe {
-                height: 320px;
-            }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 27, 154, 0.15);
+        }
 
-            footer {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: var(--purple-primary);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        /* Espacios para contenido incrustado (PDF, Canva, Video) */
+        .visor-contenedor {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: #fafafa;
+            margin-bottom: 15px;
+        }
+
+        .visor-contenedor iframe, 
+        .visor-contenedor video {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Botones generales */
+        .acciones-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-link {
+            display: block;
+            padding: 10px 15px;
+            background-color: var(--purple-light);
+            color: var(--purple-primary);
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-link:hover {
+            background-color: var(--purple-primary);
+            color: white;
+        }
+
+        .btn-autores {
+            display: block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--purple-hover));
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            box-shadow: 0 4px 10px rgba(106, 27, 154, 0.2);
+        }
+
+        .btn-autores:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 14px rgba(106, 27, 154, 0.3);
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Modal / Ventana Emergente */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(42, 27, 61, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--purple-light);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--purple-primary);
+        }
+
+        .btn-cerrar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .btn-cerrar:hover {
+            color: var(--purple-primary);
+        }
+
+        .lista-autores {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lista-autores li {
+            padding: 12px 15px;
+            background-color: var(--purple-light);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--purple-hover);
+            display: flex;
+            align-items: center;
+        }
+
+        .lista-autores li::before {
+            content: "•";
+            color: var(--purple-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-block;
+            width: 1em;
+            margin-left: -0.2em;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Bitácora Valeria Marroquín</h1>
-        <p>Portafolio digital de proyectos de electrónica y programación con Arduino</p>
+        <h1>Muestrario de Proyectos</h1>
+        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="Logo Colegio Capouilliez" class="logo-colegio">
     </header>
 
     <main>
+        <p class="subtitulo">Explora los entregables académicos del proyecto de eficiencia energética.</p>
 
-        <!-- SEMANA 1 -->
-        <section id="semana1" class="content-section reveal-on-scroll">
-            <h2 class="section-title">Semana 1: Introducción a Arduino</h2>
-            <p class="placeholder-text">Documento técnico introductorio que abarca la arquitectura de la placa Arduino, sus componentes de hardware, lógica de programación y entorno IDE.</p>
+        <div class="grid-proyectos">
             
-            <div class="media-container">
-                <iframe src="Recursos/Introducción Arduino Valeria Marroquin (1).pdf"></iframe>
+            <!-- TARJETA 1: DOCUMENTO PDF -->
+            <div class="card">
+                <div>
+                    <h2>Documento de Investigación</h2>
+                    <p>Informe escrito con el marco teórico, problemática e investigación en IRTRA Mundo Petapa.</p>
+                    
+                    <!-- VISOR DE PDF EMBEBIDO -->
+                    <div class="visor-contenedor">
+                        <!-- Reemplaza "tu-documento.pdf" por la ruta o enlace de tu archivo PDF -->
+                        <iframe src="tu-documento.pdf" title="Visor Documento PDF"></iframe>
+                    </div>
+                </div>
+                <div class="acciones-card">
+                    <div class="btn-autores" onclick="abrirModal('Documento de Investigación', ['Danae Serech'])">
+                        Ver Realizadores
+                    </div>
+                </div>
             </div>
-            <p class="mt-2 text-center">
-                <small class="text-muted">Documento en formato PDF con la guía conceptual básica.</small>
-            </p>
-        </section>
 
-        <!-- SEMANA 2 -->
-        <section id="semana2" class="content-section reveal-on-scroll">
-            <h2 class="section-title">Semana 2: Simulación en Tinkercad</h2>
-            <p class="placeholder-text">Introducción a la plataforma Tinkercad mediante el diseño virtual de circuitos, configuración de pines digitales y simulación de parpadeo de LEDs.</p>
-            
-            <div class="media-container">
-                <video controls preload="metadata">
-                    <source src="Recursos/RGB virtual.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de videos.
-                </video>
+            <!-- TARJETA 2: INFOGRAFÍA -->
+            <div class="card">
+                <div>
+                    <h2>Infografía</h2>
+                    <p>Visualización gráfica sobre el desperdicio de energía e impacto ambiental.</p>
+                    
+                    <!-- VISOR DE INFOGRAFÍA EMBEBIDO -->
+                    <div class="visor-contenedor">
+                        <!-- Reemplaza la URL del src por el enlace de tu infografía o iframe de Canva -->
+                        <iframe src="https://www.canva.com/design/TU_CODIGO/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                    </div>
+                </div>
+                <div class="acciones-card">
+                    <div class="btn-autores" onclick="abrirModal('Infografía', ['María Reneeé Herrera'])">
+                        Ver Realizadores
+                    </div>
+                </div>
             </div>
-            <p class="mt-2 text-center">
-                <small class="text-muted">Demostración de la primera práctica simulada en Tinkercad.</small>
-            </p>
-        </section>
 
-        <!-- SEMANA 3 -->
-        <section id="semana3" class="content-section reveal-on-scroll">
-            <h2 class="section-title">Semana 3: Circuito en vida real RGB</h2>
-            <p class="placeholder-text">Ensamblaje físico en protoboard utilizando un LED RGB, resistencias y la placa Arduino UNO para crear secuencias y mezcla de colores mediante programación.</p>
-            
-            <div class="media-container">
-                <video controls preload="metadata">
-                    <source src="Recursos/RGB.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de videos.
-                </video>
+            <!-- TARJETA 3: PODCAST (VIDEO) -->
+            <div class="card">
+                <div>
+                    <h2>Podcast</h2>
+                    <p>Episodio sobre automatización, eficiencia energética y el ODS 7.</p>
+                    
+                    <!-- CONTENEDOR DE VIDEO DE PODCAST -->
+                    <div class="visor-contenedor">
+                        <!-- Opción A: Archivo de video local/directo -->
+                        <video controls>
+                            <source src="tu-video-podcast.mp4" type="video/mp4">
+                            Tu navegador no soporta la reproducción de video.
+                        </video>
+                        
+                        <!-- Opción B: Si usas YouTube, puedes reemplazar la etiqueta <video> anterior por este iframe: -->
+                        <!-- <iframe src="https://www.youtube.com/embed/TU_ID_DE_VIDEO" allowfullscreen></iframe> -->
+                    </div>
+                </div>
+                <div class="acciones-card">
+                    <div class="btn-autores" onclick="abrirModal('Podcast', ['Valeria Marroquín', 'María Reneeé Herrera', 'Danae Serech'])">
+                        Ver Realizadores
+                    </div>
+                </div>
             </div>
-            <p class="mt-2 text-center">
-                <small class="text-muted">Video demostrativo del control del LED RGB en físico.</small>
-            </p>
-        </section>
 
-        <!-- SEMANA 4 -->
-        <section id="semana4" class="content-section reveal-on-scroll">
-            <h2 class="section-title">Semana 4: Primer circuito y programación en físico</h2>
-            <p class="placeholder-text">Implementación de circuitos básicos en la protoboard, cableado hacia la tarjeta Arduino física y carga de código para el control secuencial de LEDs.</p>
-            
-            <div class="media-container">
-                <video controls preload="metadata">
-                    <source src="Recursos/3 LEDS.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de videos.
-                </video>
+            <!-- TARJETA 4: CIRCUITO ARDUINO (LINK) -->
+            <div class="card">
+                <div>
+                    <h2>Circuito Tinkercad</h2>
+                    <p>Simulación del sistema automatizado con Arduino, sensores PIR, LDR, LED y Buzzer.</p>
+                </div>
+                <div class="acciones-card">
+                    <!-- ENLACE DIRECTO AL CIRCUITO -->
+                    <a href="https://www.tinkercad.com/" target="_blank" class="btn-link">⚡ Abrir Circuito en Tinkercad</a>
+                    <div class="btn-autores" onclick="abrirModal('Circuito Arduino', ['Valeria Marroquín'])">
+                        Ver Realizadores
+                    </div>
+                </div>
             </div>
-            <p class="mt-2 text-center">
-                <small class="text-muted">Prueba del primer montaje físico de LEDs y transmisión de código.</small>
-            </p>
-        </section>
 
-        <!-- SEMANA 5 -->
-        <section id="semana5" class="content-section reveal-on-scroll">
-            <h2 class="section-title">Semana 5: Semáforo funcional en físico</h2>
-            <p class="placeholder-text">Construcción y programación de un prototipo de semáforo vehicular en físico, coordinando tiempos de espera mediante instrucciones temporizadas (`delay`).</p>
-            
-            <div class="media-container">
-                <video controls preload="metadata">
-                    <source src="Recursos/no semaforo.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de videos.
-                </video>
-            </div>
-            <p class="mt-2 text-center">
-                <small class="text-muted">Demostración del ciclo de luces del semáforo armado en físico.</small>
-            </p>
-        </section>
-
-        <!-- SEMANA 6 -->
-        <section id="semana6" class="content-section reveal-on-scroll">
-            <h2 class="section-title">Semana 6: Sensor ultrasónico</h2>
-            <p class="placeholder-text">Integración de un sensor ultrasónico (HC-SR04) para la medición de distancia por rebote de ondas de sonido y activación de respuestas según la proximidad de objetos.</p>
-            
-            <div class="media-container">
-                <video controls preload="metadata">
-                    <source src="Recursos/Sens sonic.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de videos.
-                </video>
-            </div>
-            <p class="mt-2 text-center">
-                <small class="text-muted">Prueba de lectura de distancia y activación de componentes.</small>
-            </p>
-        </section>
-
-        <!-- SEMANA 7 -->
-        <section id="semana7" class="content-section reveal-on-scroll">
-            <h2 class="section-title">Semana 7: Sensor PIR en Tinkercad</h2>
-            <p class="placeholder-text">Simulación en Tinkercad de un sensor de movimiento infrarrojo (PIR), configurado para detectar la presencia de cuerpos y activar señales visuales o sonoras.</p>
-            
-            <div class="media-container">
-                <video controls preload="metadata">
-                    <source src="Recursos/PIR.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de videos.
-                </video>
-            </div>
-            <p class="mt-2 text-center">
-                <small class="text-muted">Simulación virtual del sistema de detección de movimiento con sensor PIR.</small>
-            </p>
-        </section>
-
+        </div>
     </main>
 
     <footer>
-        <span>@valeriap_marroquín</span>
-        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="Logo Colegio Capouilliez">
+        @valeriap_marroquín • Colegio Capouilliez
     </footer>
 
-    <!-- Script ligero para animación de entrada al hacer scroll -->
+    <!-- Ventana emergente (Modal) -->
+    <div class="modal-overlay" id="modalAutores" onclick="cerrarModalAfuera(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitulo">Realizadores</h3>
+                <button class="btn-cerrar" onclick="cerrarModal()">&times;</button>
+            </div>
+            <ul class="lista-autores" id="modalLista">
+                <!-- Nombres insertados con JavaScript -->
+            </ul>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.15
-            };
+        function abrirModal(titulo, integrantes) {
+            document.getElementById('modalTitulo').innerText = 'Realizadores - ' + titulo;
+            
+            const lista = document.getElementById('modalLista');
+            lista.innerHTML = ''; 
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll(".reveal-on-scroll").forEach(section => {
-                observer.observe(section);
+            integrantes.forEach(nombre => {
+                const li = document.createElement('li');
+                li.innerText = nombre;
+                lista.appendChild(li);
             });
-        });
+
+            document.getElementById('modalAutores').classList.add('active');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalAutores').classList.remove('active');
+        }
+
+        function cerrarModalAfuera(event) {
+            if (event.target.id === 'modalAutores') {
+                cerrarModal();
+            }
+        }
     </script>
+
 </body>
 </html>
-            }
-        </script>
-
-    </body>
-    </html>
